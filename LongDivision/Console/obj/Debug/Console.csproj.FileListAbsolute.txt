@@ -1,0 +1,7 @@
+D:\Edwin5\Subject Holder\Github Workspace\LongDivision\LongDivision\LongDivision\Console\bin\Debug\Console.exe.config
+D:\Edwin5\Subject Holder\Github Workspace\LongDivision\LongDivision\LongDivision\Console\bin\Debug\Console.exe
+D:\Edwin5\Subject Holder\Github Workspace\LongDivision\LongDivision\LongDivision\Console\bin\Debug\Console.pdb
+D:\Edwin5\Subject Holder\Github Workspace\LongDivision\LongDivision\LongDivision\Console\obj\Debug\Console.csprojAssemblyReference.cache
+D:\Edwin5\Subject Holder\Github Workspace\LongDivision\LongDivision\LongDivision\Console\obj\Debug\Console.csproj.CoreCompileInputs.cache
+D:\Edwin5\Subject Holder\Github Workspace\LongDivision\LongDivision\LongDivision\Console\obj\Debug\Console.exe
+D:\Edwin5\Subject Holder\Github Workspace\LongDivision\LongDivision\LongDivision\Console\obj\Debug\Console.pdb
