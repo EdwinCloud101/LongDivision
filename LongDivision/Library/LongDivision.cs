@@ -9,12 +9,12 @@ namespace Library
         public IDividendHelper DividendHelper { get; }
         public IDivisorHelper DivisorHelper { get; }
         public IQuotientHelper QuotientHelper { get; }
-        public List<string> LongDivide()
+        public CommandCollection LongDivide()
         {
-            var body = new List<string>();
+            var body = new CommandCollection();
 
-            body.Add(DivisorHelper.AddIdention(1) + DividendHelper.AddIdention(1));
-            body.Add(DivisorHelper.Divisor + "|" + DividendHelper.Dividend);
+            //body.AddExpression(DivisorHelper.AddIdention(0) + DividendHelper.AddIdention(1));
+            body.AddExpression(DivisorHelper.Divisor + "|" + DividendHelper.Dividend);
 
             string numberString = "";
             int numberInt = 0;
@@ -34,10 +34,10 @@ namespace Library
 
                 int currentQuotient = numberInt / DivisorHelper.Divisor;
                 quotientString += currentQuotient.ToString();
-                body.Add(DivisorHelper.AddIdention(0) + "-" + (DivisorHelper.Divisor * currentQuotient));
-                body.Add(DivisorHelper.AddIdention(0) + "___");
-                body.Add(DivisorHelper.AddIdention(0) + (numberInt- (DivisorHelper.Divisor * currentQuotient)));
+                body.AddExpression(DivisorHelper.AddIdention(0) + "-" + (DivisorHelper.Divisor * currentQuotient), true);
+                body.AddExpression(DivisorHelper.AddIdention(1) + (numberInt - (DivisorHelper.Divisor * currentQuotient)));
             }
+            body.InsertExpression(0, DivisorHelper.AddIdention(0) + quotientString, true);
 
             return body;
         }
@@ -55,6 +55,6 @@ namespace Library
         IDividendHelper DividendHelper { get; }
         IDivisorHelper DivisorHelper { get; }
         IQuotientHelper QuotientHelper { get; }
-        List<string> LongDivide();
+        CommandCollection LongDivide();
     }
 }

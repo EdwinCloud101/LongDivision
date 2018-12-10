@@ -14,8 +14,8 @@ namespace Console.Tests
         [Test]
         public void TextToImageTest()
         {
-            ITextToImage textToImage = new TextToImage(@"D:\Temp\1.png");
-            textToImage.Draw("Edwin");
+            //ITextToImage textToImage = new TextToImage(@"D:\Temp\1.png");
+            //textToImage.Draw("Edwin");
         }
 
         [Test]
@@ -26,10 +26,10 @@ namespace Console.Tests
             IQuotientHelper quotientHelper = new QuotientHelper(dividendHelper,divisorHelper);
 
             ILongDivision longDivision = new LongDivision(quotientHelper);
-            List<string> divisionBody = longDivision.LongDivide();
+            CommandCollection divisionBody = longDivision.LongDivide();
 
             ICommandExport export = new CommandExport(divisionBody);
-            export.ExportToImage(@"D:\Temp\2.png");
+            export.ExportToImage(@"D:\Temp\3.png");
 
             Assert.IsTrue(divisionBody.Count > 2);
         }

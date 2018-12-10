@@ -8,29 +8,47 @@ namespace Library
     public class TextToImage : ITextToImage
     {
         public string FilePath { get; }
-        public void Draw(string content)
+
+        private Font _font;
+        private Image _image;
+        private Graphics _graphics;
+        private SizeF _size;
+
+        private int _line;
+
+        public void PrepareCanvas()
         {
-            Font font = new Font(new FontFamily("Consolas"), 36f);
+            _line = 0;
 
-            Image image = new Bitmap(10, 10);
-            Graphics graphics = Graphics.FromImage(image);
-            SizeF size = graphics.MeasureString(content, font);
+            _font = new Font(new FontFamily("Consolas"), 36f);
+            _image = new Bitmap(10, 10);
+            _graphics = Graphics.FromImage(_image);
+            _size = _graphics.MeasureString("a", _font);
 
-            image.Dispose();
-            graphics.Dispose();
+            _image.Dispose();
+            _graphics.Dispose();
 
-            image = new Bitmap(Convert.ToInt32(size.Width), Convert.ToInt32(size.Height));
-            graphics = Graphics.FromImage(image);
-            graphics.Clear(Color.Aquamarine);
+            //_image = new Bitmap(Convert.ToInt32(_size.Width), Convert.ToInt32(_size.Height));
+            _image = new Bitmap(Convert.ToInt32(800), Convert.ToInt32(600));
+            _graphics = Graphics.FromImage(_image);
+            _graphics.Clear(Color.Aquamarine);
+        }
 
+        public void AddLine(string content, bool isUnderline)
+        {
             Brush textBrush = new SolidBrush(Color.Black);
-            graphics.DrawString(content,font,textBrush,0,0);
-            graphics.Save();
+            _font = new Font(new FontFamily("Consolas"), 36f, isUnderline ? FontStyle.Underline : FontStyle.Regular);
 
+            _graphics.DrawString(content, _font, textBrush, 0, _line);
+            _line += 60;
+            _graphics.Save();
             textBrush.Dispose();
-            graphics.Dispose();
+        }
 
-            image.Save(FilePath);
+        public void Save()
+        {
+            _graphics.Dispose();
+            _image.Save(FilePath);
         }
 
         public TextToImage(string filePath)
@@ -41,6 +59,8 @@ namespace Library
     public interface ITextToImage
     {
         string FilePath { get; }
-        void Draw(string content);
+        void PrepareCanvas();
+        void AddLine(string content, bool isUnderline);
+        void Save();
     }
 }

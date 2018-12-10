@@ -6,24 +6,26 @@ namespace Library
 {
     public class CommandExport : ICommandExport
     {
-        private readonly List<string> _commandList;
+        private readonly CommandCollection _commandList;
 
         public void ExportToImage(string filePath)
         {
+            ITextToImage textToImage = new TextToImage(filePath);
+            textToImage.PrepareCanvas();
+
             string content = "";
 
             foreach (var item in _commandList)
             {
-                content += item + Environment.NewLine;
+                textToImage.AddLine(item.Expression + Environment.NewLine, item.IsUnderline);
             }
 
-            ITextToImage textToImage = new TextToImage(filePath);
-            textToImage.Draw(content);
+            textToImage.Save();
         }
 
-        public CommandExport(List<string> commandList)
+        public CommandExport(CommandCollection commandCollection)
         {
-            _commandList = commandList;
+            _commandList = commandCollection;
         }
     }
 
