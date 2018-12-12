@@ -21,7 +21,7 @@ namespace Console.Tests
         [Test]
         public void Test1()
         {
-            IDividendHelper dividendHelper = new DividendHelper(137);
+            IDividendHelper dividendHelper = new DividendHelper(20);
             IDivisorHelper divisorHelper = new DivisorHelper(2);
             IQuotientHelper quotientHelper = new QuotientHelper(dividendHelper,divisorHelper);
 

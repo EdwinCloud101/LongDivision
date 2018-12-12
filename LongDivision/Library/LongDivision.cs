@@ -13,7 +13,6 @@ namespace Library
         {
             var body = new CommandCollection();
 
-            //body.AddExpression(DivisorHelper.AddIdention(0) + DividendHelper.AddIdention(1));
             body.AddExpression(DivisorHelper.Divisor + "|" + DividendHelper.Dividend);
 
             string numberString = "";
@@ -32,10 +31,10 @@ namespace Library
                     continue;
                 }
 
-                int currentQuotient = numberInt / DivisorHelper.Divisor;
+                decimal currentQuotient = numberInt / DivisorHelper.Divisor;
                 quotientString += currentQuotient.ToString();
-                body.AddExpression(DivisorHelper.AddIdention(0) + "-" + (DivisorHelper.Divisor * currentQuotient), true);
-                body.AddExpression(DivisorHelper.AddIdention(1) + (numberInt - (DivisorHelper.Divisor * currentQuotient)));
+                //body.AddExpression(DivisorHelper.AddIdention(0) + "-" + (DivisorHelper.Divisor * currentQuotient), true);
+                //body.AddExpression(DivisorHelper.AddIdention(1) + (numberInt - (DivisorHelper.Divisor * currentQuotient)));
             }
             body.InsertExpression(0, DivisorHelper.AddIdention(0) + quotientString, true);
 

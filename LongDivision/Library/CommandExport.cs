@@ -17,7 +17,8 @@ namespace Library
 
             foreach (var item in _commandList)
             {
-                textToImage.AddLine(item.Expression + Environment.NewLine, item.IsUnderline);
+                textToImage.AddWord(item.Expression + Environment.NewLine, item.IsUnderline);
+                textToImage.BreakLine();
             }
 
             textToImage.Save();
