@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Library.TextToImage;
 
 namespace Library
 {
@@ -10,7 +11,7 @@ namespace Library
 
         public void ExportToImage(string filePath)
         {
-            ITextToImage textToImage = new TextToImage(filePath);
+            ITextToImage textToImage = new TextToImage.TextToImage(filePath);
             textToImage.PrepareCanvas();
 
             string content = "";
